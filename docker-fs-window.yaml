@@ -1,0 +1,19 @@
+### 获取配置文件的启动命令:docker run -d --name pgvector-test -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=admin123 -e POSTGRES_DB=testdb pgvector/pgvector:0.8.0-pg16
+services:
+  freeswitch:
+    image: yzkj/freeswitch:1.10.12
+    cap_add:
+      - SYS_NICE
+      - SETUID
+      - SETGID
+    # restart: always
+    ports:
+      - 5060:5060/udp
+      - 5080:5080/tcp
+      - 8021:8021/tcp
+    container_name: freeswitch
+    environment:
+      TZ: Asia/Shanghai
+    privileged: true
+    security_opt:
+      - seccomp:unconfined
